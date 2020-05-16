@@ -21,14 +21,6 @@ import telegram
 app = Flask(__name__)
 CORS(app)
 
-credentials = {
-    "username": "admin",
-    "password": "Abcd1234!",
-    "dbString": "razer-hackathon.ch8fxgsovzb7.ap-southeast-1.rds.amazonaws.com",
-    "port": 3306,
-    "dbName": "razer_hackathon",
-    "dbType": "mysql"}
-
 usrname = credentials["username"]
 pwd = credentials["password"]
 string = credentials["dbString"]
@@ -39,7 +31,6 @@ dbtype = credentials["dbType"]
 engine = sa.create_engine(f"{dbtype}://{usrname}:{pwd}@{string}:{port}/{dbname}")
 conn = engine.connect()
 
-bot = telegram.Bot(token='1263177008:AAHeKwgn6QYd44qUwMylQLvvWF7nAdmuQeE')
 totp = pyotp.TOTP("JBSWY3PCBHPK3PXP")
 
 @app.route("/login", methods = ['POST'])
